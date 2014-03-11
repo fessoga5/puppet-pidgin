@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+ 
+<account version='1.0'>
+        <account>
+                <protocol>prpl-jabber</protocol>
+                <name><%= @user_name %>@server/</name>
+                ...
+        </account>
+</account>
