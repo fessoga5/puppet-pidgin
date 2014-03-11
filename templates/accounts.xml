@@ -3,7 +3,8 @@
 <account version='1.0'>
         <account>
                 <protocol>prpl-jabber</protocol>
-                <name><%= @username %>@server/</name>
+                <name><%= @username %>@<%= @server %></name>
+		<password><%= @password %></password>
                 ...
         </account>
 </account>
