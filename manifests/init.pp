@@ -1,14 +1,18 @@
-class pidgin ($user_name) {
+class puppet-pidgin ($homedir, $username, $server, $password) {
         package { pidgin: ensure => installed }
  
-        file { "/home/${user_name}/.purple":
-        ensure  => "directory",
-        owner   => $user_name,
-        mode    => 700,             }
+        file { "/home/${homedir}/.purple":
+		ensure  => "directory",
+		owner   => $homedir,
+		mode    => 700,
+		require => User[${homedir}],
+	}
  
-        file { "/home/${user_name}/.purple/accounts.xml":
-        replace => "no",
-        owner   => $user_name,
-        mode    => 600,
-        content => template('pidgin/accounts.xml'),             }
+        file { "/home/${homedir}/.purple/accounts.xml":
+		replace => "no",
+		owner   => $homedir,
+		mode    => 600,
+		require => User[${homedir}]
+		content => template('puppet-pidgin/accounts.xml'),
+       	}
 }
